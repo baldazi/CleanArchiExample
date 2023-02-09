@@ -6,11 +6,11 @@ import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 class TaskRepository @Inject constructor(
-    private val taskRepository: TaskLocalDatasource
+    private val taskDatasource: TaskLocalDatasource
 ) {
 
-    fun getAll(): Flow<List<Task>> = taskRepository.getAll()
+    fun getAll(): Flow<List<Task>> = taskDatasource.getAll()
 
-    suspend fun insert(task: Task): Unit = taskRepository.insert(task)
+    suspend fun insert(task: Task): Unit = taskDatasource.insert(task)
 
 }
