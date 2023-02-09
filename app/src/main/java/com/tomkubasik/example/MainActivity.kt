@@ -1,4 +1,4 @@
-package com.lunabee.template.android
+package com.tomkubasik.example
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

@@ -2,8 +2,6 @@ plugins {
     `application-flavors`
 }
 
-apply(from = "../Commons_Android/gradle/pr-code-analysis-app.gradle")
-
 android {
 
     compileSdk = AndroidConfig.COMPILE_SDK
@@ -48,4 +46,3 @@ dependencies {
     implementation(Google.android.material)
 }
 
-apply(from = "../Commons_Android/gradle/lunabee-app.gradle.kts")

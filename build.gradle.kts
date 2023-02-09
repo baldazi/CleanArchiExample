@@ -16,9 +16,9 @@ buildscript {
 plugins {
     id("io.gitlab.arturbosch.detekt")
 }
-apply("Commons_Android/gradle/pr-code-analysis-project.gradle")
+apply("pr-code-analysis-project.gradle")
 tasks.withType<io.gitlab.arturbosch.detekt.Detekt> {
     exclude("**/build/**")
 }
 
-apply("Commons_Android/gradle/lunabee-root.gradle.kts")
+apply("detekt-root.gradle.kts")
