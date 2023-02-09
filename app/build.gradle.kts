@@ -1,5 +1,8 @@
 plugins {
     `application-flavors`
+    id("dagger.hilt.android.plugin")
+    kotlin("kapt")
+    id("kotlin-android")
 }
 
 android {
@@ -35,14 +38,53 @@ android {
             proguardFiles += File("proguard-rules.pro")
         }
     }
+
+    kotlinOptions.freeCompilerArgs += "-opt-in=kotlin.RequiresOptIn"
+
+    buildFeatures {
+        compose = true
+    }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion = "_"
+    }
 }
 
 dependencies {
+    implementation(Google.dagger.hilt.android)
+    implementation(AndroidX.security.crypto)
     implementation(Kotlin.stdlib.jdk8)
+
+    kapt(Google.dagger.hilt.compiler)
+
+    implementation(KotlinX.coroutines.android)
 
     implementation(AndroidX.appCompat)
     implementation(AndroidX.core.ktx)
+    implementation(AndroidX.lifecycle.runtime.ktx)
+    implementation(AndroidX.lifecycle.runtime.compose)
 
     implementation(Google.android.material)
+
+    implementation(AndroidX.paging.runtime)
+
+    // Compose
+    implementation(platform(AndroidX.compose.bom))
+    implementation(AndroidX.compose.ui)
+    implementation(AndroidX.paging.compose)
+    debugImplementation(AndroidX.compose.ui.tooling)
+    implementation(AndroidX.compose.ui.toolingPreview)
+    implementation(AndroidX.compose.material3)
+    implementation(AndroidX.compose.material)
+    implementation(AndroidX.Activity.compose)
+    implementation(AndroidX.hilt.navigationCompose)
+    implementation(AndroidX.navigation.compose)
+    implementation(AndroidX.compose.material.icons.extended)
+    implementation(AndroidX.compose.foundation)
+    implementation(Google.accompanist.navigationAnimation)
+    implementation(Google.accompanist.systemUiController)
+    implementation(KotlinX.collections.immutable)
+    implementation(Google.accompanist.pager.indicators)
+    implementation(Google.accompanist.pager)
 }
 

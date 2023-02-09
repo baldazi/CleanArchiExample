@@ -8,17 +8,28 @@ buildscript {
     }
 
     dependencies {
-        classpath("com.android.tools.build:gradle:_")
+        classpath(Android.tools.build.gradlePlugin)
         classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:_")
+        classpath(Google.dagger.hilt.android.gradlePlugin)
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
     }
 }
 
 plugins {
     id("io.gitlab.arturbosch.detekt")
 }
+
 apply("pr-code-analysis-project.gradle")
 tasks.withType<io.gitlab.arturbosch.detekt.Detekt> {
     exclude("**/build/**")
 }
 
-apply("detekt-root.gradle.kts")
+detekt {
+    config = files("$projectDir/detekt-config.yml")
+}
