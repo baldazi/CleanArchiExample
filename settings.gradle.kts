@@ -20,3 +20,5 @@ refreshVersions {
 }
 
 include("app")
+include(":local-android")
+include(":domain")

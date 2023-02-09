@@ -1,6 +1,7 @@
 plugins {
     id("com.android.library")
     id("kotlin-android")
+    kotlin("kapt")
 }
 
 android {
@@ -11,4 +12,9 @@ android {
         minSdk = AndroidConfig.MIN_SDK
         targetSdk = AndroidConfig.TARGET_SDK
     }
+}
+
+dependencies {
+    implementation(Google.dagger.hilt.android)
+    kapt(Google.dagger.hilt.compiler)
 }

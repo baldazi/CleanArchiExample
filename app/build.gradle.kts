@@ -50,6 +50,10 @@ android {
     }
 }
 
+hilt {
+    enableAggregatingTask = true
+}
+
 dependencies {
     implementation(Google.dagger.hilt.android)
     implementation(AndroidX.security.crypto)
@@ -86,5 +90,9 @@ dependencies {
     implementation(KotlinX.collections.immutable)
     implementation(Google.accompanist.pager.indicators)
     implementation(Google.accompanist.pager)
+
+    runtimeOnly(project(":local-android"))
+
+    implementation(project(":domain"))
 }
 
