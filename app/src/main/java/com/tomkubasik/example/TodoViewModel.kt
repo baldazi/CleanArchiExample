@@ -17,17 +17,32 @@ import javax.inject.Inject
 
 @HiltViewModel
 class TodoViewModel @Inject constructor(
-    private val taskRepository: TaskRepository
+    private val taskRepository: TaskRepository,
 ) : ViewModel() {
 
     val tasks: StateFlow<List<UiTask>> = taskRepository.getAll().map {
         it.map(Task::toUiTask)
     }.stateIn(viewModelScope, SharingStarted.Eagerly, listOf())
 
-    fun addTask() {
+    fun addTask(
+        description: String,
+    ) {
         viewModelScope.launch {
             taskRepository.insert(
-                Task(UUID.randomUUID().toString(), isDone = false, description = "insert nouvelle tache")
+                Task(UUID.randomUUID().toString(), isDone = false, description = description),
+            )
+        }
+    }
+
+    fun toggleTask(id: String, isDone: Boolean) {
+        viewModelScope.launch {
+            val initialTask = tasks.value.first { it.id == id }
+            taskRepository.insert(
+                Task(
+                    id = initialTask.id,
+                    isDone = isDone,
+                    description = initialTask.description,
+                ),
             )
         }
     }

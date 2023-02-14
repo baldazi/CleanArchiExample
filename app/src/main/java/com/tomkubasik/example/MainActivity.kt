@@ -3,7 +3,6 @@ package com.tomkubasik.example
 import android.os.Bundle
 import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
-import androidx.compose.material.Text
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

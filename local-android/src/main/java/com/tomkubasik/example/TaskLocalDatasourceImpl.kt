@@ -10,7 +10,7 @@ import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
 internal class TaskLocalDatasourceImpl @Inject constructor(
-    val appDatabase: AppDatabase
+    val appDatabase: AppDatabase,
 ) : TaskLocalDatasource {
 
     override fun getAll(): Flow<List<Task>> {

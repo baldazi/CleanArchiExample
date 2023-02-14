@@ -19,16 +19,16 @@ fun TaskCell(
 ) {
     Row(
         modifier = Modifier.padding(Constants.Spacing.large),
-        verticalAlignment = Alignment.CenterVertically
+        verticalAlignment = Alignment.CenterVertically,
     ) {
         Text(
             text = uiTask.description,
-            modifier = Modifier.weight(1f)
+            modifier = Modifier.weight(1f),
         )
         Spacer(modifier = Modifier.size(Constants.Spacing.large))
         Checkbox(
             checked = uiTask.done,
-            onCheckedChange = onCheckClick
+            onCheckedChange = onCheckClick,
         )
     }
 }

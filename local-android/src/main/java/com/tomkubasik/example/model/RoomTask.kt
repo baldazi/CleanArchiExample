@@ -8,13 +8,17 @@ import com.tomkubasik.example.domain.model.Task
 internal data class RoomTask(
     @PrimaryKey val id: String,
     val description: String,
-    val isDone: Boolean
+    val isDone: Boolean,
 )
 
 internal fun RoomTask.toTask() = Task(
-    id, description, isDone
+    id,
+    description,
+    isDone,
 )
 
 internal fun Task.toRoomTask() = RoomTask(
-    id, description, isDone
+    id,
+    description,
+    isDone,
 )

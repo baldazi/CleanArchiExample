@@ -19,5 +19,4 @@ internal interface TaskDao {
 
     @Delete
     suspend fun deleteAll(vararg task: RoomTask)
-
 }
